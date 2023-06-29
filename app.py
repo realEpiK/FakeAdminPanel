@@ -34,7 +34,8 @@ def main():
         print("Invalid username or password.")
 
 def users():
-    print("Users list")
+    userList = open("userlist.txt","r")
+    print(userList.readlines())
 
 def banList():
     print("Ban list")
