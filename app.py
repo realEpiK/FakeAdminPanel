@@ -11,7 +11,6 @@ def menu():
     print("D. Ban")
     
     response = input("What would you like to do?: ")
-    
     if response == "A" or response == "a":
         users()
     elif response == "B" or response == "b":
@@ -44,6 +43,8 @@ def users():
     
     menuReturn = input("Return to menu? Y/N")
     if menuReturn.lower() == "y":
+        print("Returning to menu...")
+        time.sleep(3)
         menu()
     else:
         return users()
@@ -58,6 +59,8 @@ def banList(): ## FIXED WITH GPT :)
         
     menuReturn = input("Return to menu? Y/N") ## yes i know its asking you twice, at least im doing something
     if menuReturn.lower() == "y":
+        print("Returning to menu...")
+        time.sleep(3)
         menu()
     else:
         return banList()
@@ -72,6 +75,14 @@ def ban():
     print(f"You have banned {banUser}!") ## make it return to menu
     
     banListFile.close()
+    
+    returnUser = input("Return to menu? Y/N")
+    if returnUser.lower() == "y":
+        print("Returning to menu...")
+        time.sleep(3)
+        menu()
+    else:
+        return ban()
     
 # Call the main function to start the program
 main()
