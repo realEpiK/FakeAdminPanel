@@ -41,7 +41,7 @@ def users():
     
     userList.close()
     
-    menuReturn = input("Return to menu? Y/N")
+    menuReturn = input("Return to menu? Y/N: ")
     if menuReturn.lower() == "y":
         print("Returning to menu...")
         time.sleep(3)
@@ -50,14 +50,14 @@ def users():
         return users()
     
 def banList(): ## FIXED WITH GPT :)
-    banlist_response = input("Would you like to view the ban list? Y/N:")
+    banlist_response = input("Would you like to view the ban list? Y/N: ")
     if banlist_response.lower() == "y": ## FIXED INSTEAD OF USING Y OR y
         banListFile = open("banlist.txt", "r")
         for user in banListFile:
             print(user)
         banListFile.close()
         
-    menuReturn = input("Return to menu? Y/N") ## yes i know its asking you twice, at least im doing something
+    menuReturn = input("Return to menu? Y/N: ") ## yes i know its asking you twice, at least im doing something
     if menuReturn.lower() == "y":
         print("Returning to menu...")
         time.sleep(3)
@@ -76,7 +76,7 @@ def ban():
     
     banListFile.close()
     
-    returnUser = input("Return to menu? Y/N")
+    returnUser = input("Return to menu? Y/N: ")
     if returnUser.lower() == "y":
         print("Returning to menu...")
         time.sleep(3)
