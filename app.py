@@ -65,7 +65,7 @@ def banList(): ## FIXED WITH GPT :)
     else:
         return banList()
     
-def kick():
+def kick(): ## Will work on this friday night :)
     print("Kick")
 
 def ban():
