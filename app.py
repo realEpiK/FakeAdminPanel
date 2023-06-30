@@ -37,11 +37,16 @@ def main():
 
 def users():
     userList = open("userlist.txt","r")
-    
     for user in userList:
         print(user)
-        
+    
     userList.close()
+    
+    menuReturn = input("Return to menu? Y/N")
+    if menuReturn.lower() == "y":
+        menu()
+    else:
+        return users()
     
 def banList(): ## FIXED WITH GPT :)
     banlist_response = input("Would you like to view the ban list? Y/N:")
@@ -50,11 +55,13 @@ def banList(): ## FIXED WITH GPT :)
         for user in banListFile:
             print(user)
         banListFile.close()
-    else:  ## INSTEAD OF VIEWING FILE AND CLOSING, MAKE IT ASK IF YOU WANNA VIEW IT AGAIN OR GO BACK TO MENU
-        print("Returning to menu")
-        time.sleep(3)
+        
+    menuReturn = input("Return to menu? Y/N") ## yes i know its asking you twice, at least im doing something
+    if menuReturn.lower() == "y":
         menu()
-
+    else:
+        return banList()
+    
 def kick():
     print("Kick")
 
