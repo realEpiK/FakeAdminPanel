@@ -11,13 +11,13 @@ def menu():
     print("D. Ban")
     
     response = input("What would you like to do?: ")
-    if response == "A" or response == "a":
+    if response.lower() == "a":
         users()
-    elif response == "B" or response == "b":
+    elif response.lower() == "b":
         banList()
-    elif response == "C" or response == "c":
+    elif response.lower() == "c":
         kick()
-    elif response == "D" or response == "d":
+    elif response.lower() == "d":
         ban()
     else:
         print("Invalid option.")
@@ -37,8 +37,7 @@ def main():
 def users():
     userList = open("userlist.txt","r")
     for user in userList:
-        print(user)
-    
+        print(user.strip())
     userList.close()
     
     menuReturn = input("Return to menu? Y/N: ")
@@ -49,13 +48,12 @@ def users():
     else:
         return users()
     
-def banList(): ## FIXED WITH GPT :)
-    banlist_response = input("Would you like to view the ban list? Y/N: ")
-    if banlist_response.lower() == "y": ## FIXED INSTEAD OF USING Y OR y
-        banListFile = open("banlist.txt", "r")
-        for user in banListFile:
-            print(user)
-        banListFile.close()
+def banList():
+    banListFile = open("banlist.txt", "r")
+    for user in banListFile:
+        print(user.strip())
+    banListFile.close()
+
         
     menuReturn = input("Return to menu? Y/N: ") ## yes i know its asking you twice, at least im doing something
     if menuReturn.lower() == "y":
@@ -65,8 +63,25 @@ def banList(): ## FIXED WITH GPT :)
     else:
         return banList()
     
-def kick(): ## Will work on this friday night :)
-    print("Kick")
+def kick():
+    userList = open("userlist.txt", "r")
+    userkick = userList.readlines()
+    userList.close()  # Close the file after reading
+    
+    kickuser = input("Kick: ")
+    
+    if kickuser in userkick:
+        print(f"User {kickuser} has been kicked")
+    else:
+        print(f"{kickuser} was not found in the list.")
+    
+    menuReturn = input("Return to menu? Y/N: ") ## yes i know its asking you twice, at least im doing something
+    if menuReturn.lower() == "y":
+        print("Returning to menu...")
+        time.sleep(3)
+        menu()
+    else:
+        return kick()
 
 def ban():
     banListFile = open("banlist.txt", "a")
