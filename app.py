@@ -1,4 +1,6 @@
 import time
+import sys
+
 
 admin_username = "EpiK"
 admin_password = "password"
@@ -9,6 +11,7 @@ def menu():
     print("B. View banlist")
     print("C. Kick")
     print("D. Ban")
+    print("E. Exit")
     
     response = input("What would you like to do?: ")
     if response.lower() == "a":
@@ -19,6 +22,8 @@ def menu():
         kick()
     elif response.lower() == "d":
         ban()
+    elif response.lower() == "e":
+        exit()
     else:
         print("Invalid option.")
 
@@ -98,6 +103,11 @@ def ban():
         menu()
     else:
         return ban()
+    
+def exit():
+    print("Exiting...")
+    time.sleep(3)
+    sys.exit()
     
 # Call the main function to start the program
 main()
