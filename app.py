@@ -5,7 +5,7 @@ import sys
 admin_username = "EpiK"
 admin_password = "password"
 
-def menu():
+def menu(): # Main menu
     print("Welcome to the EpiK Admin Panel version 0.1")
     print("A. View all users")
     print("B. View banlist")
@@ -15,19 +15,20 @@ def menu():
     
     response = input("What would you like to do?: ")
     if response.lower() == "a":
-        users()
+        view_all_users()
     elif response.lower() == "b":
-        banList()
+        view_ban_list()
     elif response.lower() == "c":
-        kick()
+        kick_user()
     elif response.lower() == "d":
-        ban()
+        ban_user()
     elif response.lower() == "e":
-        exit()
+        exit_program()
     else:
         print("Invalid option.")
+        
 
-def main():
+def main(): # Login panel 
     username = input("Enter Username: ")
     password = input("Enter Password: ")
     logged_in = False
@@ -35,11 +36,11 @@ def main():
     if username == admin_username and password == admin_password:
         print(f"Welcome, {username}!")
         logged_in = True
-        menu()  # Call the menu function if logged in successfully
+        menu()  
     else:
         print("Invalid username or password.")
 
-def users():
+def view_all_users(): # Displays user list
     userList = open("userlist.txt","r")
     for user in userList:
         print(user.strip())
@@ -51,27 +52,27 @@ def users():
         time.sleep(3)
         menu()
     else:
-        return users()
+        return view_all_users()
     
-def banList():
+def view_ban_list(): # Displays ban list
     banListFile = open("banlist.txt", "r")
     for user in banListFile:
         print(user.strip())
     banListFile.close()
 
         
-    menuReturn = input("Return to menu? Y/N: ") ## yes i know its asking you twice, at least im doing something
+    menuReturn = input("Return to menu? Y/N: ") 
     if menuReturn.lower() == "y":
         print("Returning to menu...")
         time.sleep(3)
         menu()
     else:
-        return banList()
+        return view_ban_list()
     
-def kick():
+def kick_user(): # Able to "kick" user
     userList = open("userlist.txt", "r")
     userkick = userList.readlines()
-    userList.close()  # Close the file after reading
+    userList.close()
     
     kickuser = input("Kick: ")
     
@@ -80,19 +81,19 @@ def kick():
     else:
         print(f"{kickuser} was not found in the list.")
     
-    menuReturn = input("Return to menu? Y/N: ") ## yes i know its asking you twice, at least im doing something
+    menuReturn = input("Return to menu? Y/N: ") 
     if menuReturn.lower() == "y":
         print("Returning to menu...")
         time.sleep(3)
         menu()
     else:
-        return kick()
+        return kick_user()
 
-def ban():
+def ban_user(): # Able to "ban" user
     banListFile = open("banlist.txt", "a")
     banUser = input("Ban user: ")
-    banListFile.write(banUser + "\n")  # Write the banned user to the file
-    print(f"You have banned {banUser}!") ## make it return to menu
+    banListFile.write(banUser + "\n")  
+    print(f"You have banned {banUser}!") 
     
     banListFile.close()
     
@@ -102,12 +103,22 @@ def ban():
         time.sleep(3)
         menu()
     else:
-        return ban()
+        return ban_user()
     
-def exit():
+def exit_program(): # Exiting program
     print("Exiting...")
     time.sleep(3)
     sys.exit()
+    
+def return_to_menu(): # Returns to menu, it works, but if the user says no, it wont work.
+    menu_return = input("Would you like to return to menu? Y/N: ")
+    if menu_return.lower() == "Y":
+        print("Returning to menu...")
+        time.sleep(3)
+        menu()
+    else:
+        return_to_menu()
+        
     
 # Call the main function to start the program
 main()
