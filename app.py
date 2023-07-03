@@ -31,9 +31,9 @@ def menu(): # Main menu
 def main(): # Login panel 
     username = input("Enter Username: ")
     password = input("Enter Password: ")
-    logged_in = False
+    logged_in = False ## I have no idea what im using this for.
 
-    if username == admin_username and password == admin_password:
+    if username == admin_username and password == admin_password: ## asks for a user and password, if all correct, welcomes user and changes login bool to true, else it prints error
         print(f"Welcome, {username}!")
         logged_in = True
         menu()  
@@ -46,13 +46,11 @@ def view_all_users(): # Displays user list
         print(user.strip())
     userList.close()
     
-    menuReturn = input("Return to menu? Y/N: ")
-    if menuReturn.lower() == "y":
-        print("Returning to menu...")
-        time.sleep(3)
-        menu()
+    menu_return = input("Would you like to return to menu? Y/N: ") ## Asks user if they want to return to menu, if yes, runs function return_to menu, else, it remains on the same function
+    if menu_return.lower() == "y":
+        return_to_menu()
     else:
-        return view_all_users()
+        view_all_users()
     
 def view_ban_list(): # Displays ban list
     banListFile = open("banlist.txt", "r")
@@ -61,14 +59,12 @@ def view_ban_list(): # Displays ban list
     banListFile.close()
 
         
-    menuReturn = input("Return to menu? Y/N: ") 
-    if menuReturn.lower() == "y":
-        print("Returning to menu...")
-        time.sleep(3)
-        menu()
+    menu_return = input("Would you like to return to menu? Y/N: ") ## Asks user if they want to return to menu, if yes, runs function return_to menu, else, it remains on the same function
+    if menu_return.lower() == "y":
+        return_to_menu()
     else:
-        return view_ban_list()
-    
+        view_ban_list()
+
 def kick_user(): # Able to "kick" user
     userList = open("userlist.txt", "r")
     userkick = userList.readlines()
@@ -81,15 +77,13 @@ def kick_user(): # Able to "kick" user
     else:
         print(f"{kickuser} was not found in the list.")
     
-    menuReturn = input("Return to menu? Y/N: ") 
-    if menuReturn.lower() == "y":
-        print("Returning to menu...")
-        time.sleep(3)
-        menu()
+    menu_return = input("Would you like to return to menu? Y/N: ") ## Asks user if they want to return to menu, if yes, runs function return_to menu, else, it remains on the same function
+    if menu_return.lower() == "y":
+        return_to_menu()
     else:
-        return kick_user()
+        kick_user()
 
-def ban_user(): # Able to "ban" user
+def ban_user():
     banListFile = open("banlist.txt", "a")
     banUser = input("Ban user: ")
     banListFile.write(banUser + "\n")  
@@ -97,13 +91,11 @@ def ban_user(): # Able to "ban" user
     
     banListFile.close()
     
-    returnUser = input("Return to menu? Y/N: ")
-    if returnUser.lower() == "y":
-        print("Returning to menu...")
-        time.sleep(3)
-        menu()
+    menu_return = input("Would you like to return to menu? Y/N: ") ## Asks user if they want to return to menu, if yes, runs function return_to menu, else, it remains on the same function
+    if menu_return.lower() == "y":
+        return_to_menu()
     else:
-        return ban_user()
+        ban_user()
     
 def exit_program(): # Exiting program
     print("Exiting...")
@@ -111,14 +103,9 @@ def exit_program(): # Exiting program
     sys.exit()
     
 def return_to_menu(): # Returns to menu, it works, but if the user says no, it wont work.
-    menu_return = input("Would you like to return to menu? Y/N: ")
-    if menu_return.lower() == "Y":
         print("Returning to menu...")
         time.sleep(3)
         menu()
-    else:
-        return_to_menu()
         
-    
 # Call the main function to start the program
 main()
