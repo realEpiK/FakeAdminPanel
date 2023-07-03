@@ -31,11 +31,11 @@ def menu(): # Main menu
 def main(): # Login panel 
     username = input("Enter Username: ")
     password = input("Enter Password: ")
-    logged_in = False ## I have no idea what im using this for.
+   ##  logged_in = False ## I have no idea what im using this for.
 
     if username == admin_username and password == admin_password: ## asks for a user and password, if all correct, welcomes user and changes login bool to true, else it prints error
         print(f"Welcome, {username}!")
-        logged_in = True
+        ## logged_in = True
         menu()  
     else:
         print("Invalid username or password.")
