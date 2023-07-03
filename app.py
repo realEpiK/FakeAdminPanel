@@ -1,6 +1,8 @@
 import time
 import sys
+import os
 
+# Lets add some code to check if banlist.txt and userlist.txt exist, if not, make them!
 
 admin_username = "EpiK"
 admin_password = "password"
