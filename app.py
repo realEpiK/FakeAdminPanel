@@ -3,6 +3,7 @@ import sys
 import os
 
 # Lets add some code to check if banlist.txt and userlist.txt exist, if not, make them!
+# Also add code to add users to userlist.txt
 
 admin_username = "EpiK"
 admin_password = "password"
