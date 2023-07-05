@@ -15,10 +15,8 @@ EpiK
 Testing
 EpiK
 e
-& C:/Users/clayt/AppData/Local/Programs/Python/Python310/python.exe c:/Users/clayt/Documents/GitHub/FakeAdminPanel/app.py
 Testing1
 Testing2
-& C:/Users/clayt/AppData/Local/Programs/Python/Python310/python.exe c:/Users/clayt/Documents/GitHub/FakeAdminPanel/app.py
 password
 EpiK
 EpiK!!!
