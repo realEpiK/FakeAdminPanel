@@ -1,4 +1,5 @@
 import time
+import json
 import sys
 import os
 
@@ -89,7 +90,7 @@ def kick_user(): # Able to "kick" user
     else:
         kick_user()
 
-def ban_user():
+def ban_user(): # Able to "ban" user
     banListFile = open("banlist.txt", "a")
     banUser = input("Ban user: ")
     banListFile.write(banUser + "\n")  
