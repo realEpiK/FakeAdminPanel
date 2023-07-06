@@ -4,6 +4,7 @@ import os
 
 # Lets add some code to check if banlist.txt and userlist.txt exist, if not, make them!
 # Also add code to add users to userlist.txt
+# Switch Txt to json
 
 admin_username = "EpiK"
 admin_password = "password"
@@ -17,15 +18,17 @@ def menu(): # Main menu
     print("E. Exit")
     
     response = input("What would you like to do?: ")
-    if response.lower() == "a":
+    
+    choice = response.lower() ## Thanks redox :)
+    if choice == "a":
         view_all_users()
-    elif response.lower() == "b":
+    elif choice == "b":
         view_ban_list()
-    elif response.lower() == "c":
+    elif choice == "c":
         kick_user()
-    elif response.lower() == "d":
+    elif choice == "d":
         ban_user()
-    elif response.lower() == "e":
+    elif choice == "e":
         exit_program()
     else:
         print("Invalid option.")
