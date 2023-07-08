@@ -117,12 +117,20 @@ def kick_user(): # Able to "kick" user
         kick_user()
 
 def ban_user(): # Able to "ban" user
-    banListFile = open("banlist.txt", "a")
-    banUser = input("Ban user: ")
-    banListFile.write(banUser + "\n")  
-    print(f"You have banned {banUser}!") 
-    
-    banListFile.close()
+    file = open("userlist.txt", "r")
+    user = file.read()
+    file.close()
+
+    user_ban_input = input("Ban user: ")
+
+    if user_ban_input in user:
+        file = open("userlist.txt", "w")
+        file.write(user.replace(user_ban_input, "")) ## So i wanted this, but asked chatgpt, so i gotta study how this works more.
+        print(f"{user_ban_input} has been banned!")
+        file.close()
+    else:
+        print(f"{user_ban_input} does not exist.")
+
     
     menu_return = input("Would you like to return to menu? Y/N: ") ## Asks user if they want to return to menu, if yes, runs function return_to menu, else, it remains on the same function
     if menu_return.lower() == "y":
