@@ -6,6 +6,7 @@ import os
 # Also add code to add users to userlist.txt
 # Switch Txt to json -- Forget it, ill learn this later
 
+# in future -  error handling and input validation
 admin_username = "EpiK"
 admin_password = "password"
 
