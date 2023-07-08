@@ -1,22 +1,31 @@
 import time
-import json
 import sys
 import os
 
 # Lets add some code to check if banlist.txt and userlist.txt exist, if not, make them!
 # Also add code to add users to userlist.txt
-# Switch Txt to json
+# Switch Txt to json -- Forget it, ill learn this later
 
 admin_username = "EpiK"
 admin_password = "password"
+
+def check_files():
+    files = ["banlist.txt",'userlist.txt']
+    
+    for file in files:
+        if not os.path.exists(file):
+            with open(file,"w"):
+                pass
+            print(f"{file} has been created!")
 
 def menu(): # Main menu
     print("Welcome to the EpiK Admin Panel version 0.1")
     print("A. View all users")
     print("B. View banlist")
-    print("C. Kick")
-    print("D. Ban")
-    print("E. Exit")
+    print("C. Create user")
+    print("D. Kick")
+    print("E. Ban")
+    print("F. Exit")
     
     response = input("What would you like to do?: ")
     
@@ -26,10 +35,12 @@ def menu(): # Main menu
     elif choice == "b":
         view_ban_list()
     elif choice == "c":
-        kick_user()
+        create_user()
     elif choice == "d":
-        ban_user()
+        kick_user()
     elif choice == "e":
+        ban_user()
+    elif choice == "f":
         exit_program()
     else:
         print("Invalid option.")
@@ -71,6 +82,21 @@ def view_ban_list(): # Displays ban list
         return_to_menu()
     else:
         view_ban_list()
+        
+def create_user():
+    user_list = open("userlist.txt","a")
+    new_user = input("Create user: ")
+    
+    user_list.write(new_user + "\n")
+    print(f"You have created {new_user}!")
+    
+    user_list.close()
+    
+    menu_return = input("Would you like to return to menu? Y/N: ") ## Asks user if they want to return to menu, if yes, runs function return_to menu, else, it remains on the same function
+    if menu_return.lower() == "y":
+        return_to_menu()
+    else:
+        create_user()
 
 def kick_user(): # Able to "kick" user
     userList = open("userlist.txt", "r")
