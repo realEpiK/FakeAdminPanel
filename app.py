@@ -20,6 +20,9 @@ def check_files():
             print(f"{file} has been created!")
 
 def menu(): # Main menu
+    
+    check_files()
+    
     print("Welcome to the EpiK Admin Panel version 0.1")
     print("A. View all users")
     print("B. View banlist")
