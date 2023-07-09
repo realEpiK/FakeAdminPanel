@@ -10,7 +10,7 @@ import os
 admin_username = "EpiK"
 admin_password = "password"
 
-def check_files():
+def check_files(): # Checks files to see if they exist
     files = ["banlist.txt",'userlist.txt']
     
     for file in files:
